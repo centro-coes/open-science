@@ -3,3 +3,5 @@ title: "Bienvenidos!"
 ---
 
 Ciencia Abierta - COES
+
+* Versión Alfa

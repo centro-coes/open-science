@@ -5,8 +5,6 @@ output:
     toc: yes
     toc_float:
       collapsed: no
-  pdf_document:
-    toc: yes
 ---
 
 <div style="text-align: right">

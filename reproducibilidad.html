@@ -13,6 +13,7 @@
 
 <title>Protocolo de Reproducibilidad</title>
 
+<script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -386,9 +387,9 @@ div.tocify {
 
 
 <div style="text-align: right">
-<p><strong>Julio César Iturra Sanhueza</strong> <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
-<p><strong>Tomás Campos Castro</strong> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
-<p><strong>Juan Carlos Castillo</strong> <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+<p><strong>Julio César Iturra Sanhueza</strong> <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p><strong>Tomás Campos Castro</strong> <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p><strong>Juan Carlos Castillo</strong> <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 </div>
 <hr />
 <div id="introducción" class="section level1">
@@ -407,7 +408,7 @@ div.tocify {
 <p>Dicho lo anterior, cada una de estas partes requiere particular atención, de modo tal que la articulación entre cada una de ellas sea lo más fluida posible y amigable para el usuario. A continuación, se presentan las cuatro carpetas que dan estructura a un proyecto. La Figura 1 ilustra los archivos que deben estar incluidos en la documentación, y cómo deben estar organizados en varias carpetas y subcarpetas.</p>
 <div style="float:left;margin-left: 0px; margin-right: 30px;">
 <div class="figure">
-<img src="images/reprod1.png" alt="Fig. 1: Documentación de un proyecto y su estructura" />
+<img src="images/reprod1.png" style="height:9em" alt="" />
 <p class="caption"><strong>Fig. 1</strong>: Documentación de un proyecto y su estructura</p>
 </div>
 </div>
@@ -514,9 +515,9 @@ div.tocify {
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Asistente de la Línea de Interacciones Grupales e individuales en <strong><a href="https://www.coes.cl/">COES</a></strong><a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>Coordinador de Proyectos en <strong><a href="https://www.coes.cl/">COES</a></strong><a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>Subdirector e Investigador Principal en <strong><a href="https://www.coes.cl/">COES</a></strong><a href="#fnref3">↩</a></p></li>
+<li id="fn1"><p>Asistente de la Línea de Interacciones Grupales e individuales en <strong><a href="https://www.coes.cl/">COES</a></strong><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Coordinador de Proyectos en <strong><a href="https://www.coes.cl/">COES</a></strong><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Subdirector e Investigador Principal en <strong><a href="https://www.coes.cl/">COES</a></strong><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 
@@ -570,7 +571,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
