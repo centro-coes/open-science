@@ -4,4 +4,4 @@ title: "Bienvenidos!"
 
 Ciencia Abierta - COES
 
-* Versión Alfa
+* Versión Beta
