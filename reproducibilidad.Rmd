@@ -1,0 +1,189 @@
+---
+title: "Protocolo de Reproducibilidad"
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      collapsed: no
+  pdf_document:
+    toc: yes
+---
+
+<div style="text-align: right">
+**Julio César Iturra Sanhueza** [^1]
+
+**Tomás Campos Castro** [^2]
+
+**Juan Carlos Castillo** [^3]
+
+[^1]: Asistente de la Línea de Interacciones Grupales e individuales en **[COES](https://www.coes.cl/)**
+[^2]: Coordinador de Proyectos en **[COES](https://www.coes.cl/)**
+[^3]: Subdirector e Investigador Principal en **[COES](https://www.coes.cl/)**
+
+</div>
+
+---
+
+# Introducción
+
+El presente apartado tiene como objetivo general el introducir a las y los investigadores de COES a un flujo de trabajo que cumpla con estándares mínimos para la confección de un trabajo transparente, abierto y, sobre todo, reproducible. En este sentido, esta sección se centrará en la organización de carpetas y archivos, con el objetivo de generar proyectos auto-contenidos que permitan la reproducibilidad de análisis y obtención de resultados, con un foco particular en la investigación cuantitativa. Como base para este documento, emplearemos los estándares propuestos por el Proyecto TIER, el cual se define de la siguiente manera:
+
+    Project TIER (Teaching Integrity in Empirical Research) promotes the integration of principles and practices related to transparency and replicability in the research training of social scientists. We develop methods and tools for enhancing research transparency that are specially designed to serve the needs of undergraduate and graduate students, and disseminate them to faculty who teach courses on quantitative methods or supervise student research, as well as to students interested in adopting them independently. Our goal is to reach a day in which training in research transparency becomes standard and ubiquitous in the education of social scientists.
+    
+# El Protocolo
+Sobre la base del protocolo TIER en su versión 4.0, un proyecto debe contener al menos tres elementos o partes que son fundamentales.
+
+1.	Los datos empleados por el proyecto.
+
+2.	Archivos de comandos, que contienen código escrito para su software, que limpian y preparan los datos según sea necesario, y luego ejecutan los procedimientos que generan los resultados reportados en su estudio.
+
+3.	Diversas formas de información de respaldo para ayudar al usuario a comprender y hacer uso de su documentación (p.ej: archivos README)
+
+Dicho lo anterior, cada una de estas partes requiere particular atención, de modo tal que la articulación entre cada una de ellas sea lo más fluida posible y amigable para el usuario. A continuación, se presentan las cuatro carpetas que dan estructura a un proyecto. La Figura 1 ilustra los archivos que deben estar incluidos en la documentación, y cómo deben estar organizados en varias carpetas y subcarpetas.
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 1**: Documentación de un proyecto y su estructura](images\reprod1.png){height=9em }
+
+</div>
+
+## Carpeta 1: Datos
+
+En la carpeta para Datos encontraremos tres elementos principales: 
+
+1.	Datos originales (sin procesar)
+2.	Datos importables (bases con formato ad-hoc)
+3.	Carpeta con toda la Meta-data de los datos empleados.
+
+Datos originales: En el caso de que el proyecto utilice datos secundarios o esté generando sus propios datos, se espera que existan copias de bases de datos sin procesar. Los archivos de datos originales sirven como un registro de los datos con los que comenzó el proyecto. Por lo tanto, las copias que guarde en su carpeta de Datos originales deben ser idénticas a las que comenzó antes de realizar cualquier cambio en ellas.
+
+El trabajo que realice para su proyecto implica manipular los archivos de datos originales de muchas maneras: extrayendo los datos que contienen, limpiando y procesando los datos según sea necesario para su estudio, y luego realizando sus análisis. Pero su carpeta de Datos originales debe contener copias de sus archivos de datos originales que no haya manipulado o modificado de ninguna manera.
+
+Datos importables: Ocasionalmente, un archivo de datos original está en un formato que el software estadístico que está utilizando para su proyecto no puede leer. En esos casos, debe crear una versión modificada del archivo de datos original en un formato que su software pueda leer. Esta versión modificada del archivo de datos original se denomina archivo de datos importable.
+
+Cuando necesite crear una versión importante de un archivo de datos original, solo debe realizar las modificaciones mínimas necesarias para que su software pueda leerlo. No haga otra limpieza o procesamiento en este momento.
+
+Cuando necesite crear una versión importable de un archivo de datos original, debe mantener ambas versiones (importable y original) en la carpeta Datos. (Las versiones originales e importables de un archivo de datos deben tener diferentes nombres).
+
+En el caso de que sus archivos de datos originales están en un formato que su software puede leer, no necesita crear ningún archivo de datos importable.
+
+### Sub carpeta meta-data
+
+La carpeta de meta-data debe contener:
+
+•	Un documento Guía de la meta-data
+•	Materiales suplementarios con meta-data (de ser necesario)
+
+Para cada uno de sus archivos de datos originales, la Guía de meta-data proporciona el tipo de información que normalmente se encuentra en un libro de códigos que acompaña a un conjunto de datos, como definiciones de variables y codificación, métodos de muestreo y cualquier otra cosa que un usuario necesite saber para trabajar e interpretar el dato adecuadamente. El autor/es del proyecto es quien/es deben redactar el documento guía.
+
+La Guía de metadatos debe organizarse en una o más secciones; cada sección debe proporcionar información sobre uno de sus archivos de datos originales. Para cada archivo de datos original, la información incluida en la Guía de metadatos debe incluir:
+
+1.	Una cita bibliográfica para el archivo de datos original.
+2.	Un identificador de objeto digital (DOI) para el archivo de datos (si se ha asignado uno) 
+3.	La fecha en que el autor descargó por primera vez, u obtuvo de alguna otra manera, el archivo de datos original.
+4.	Una explicación de cómo un lector interesado puede obtener una copia del archivo de datos original.
+5.	Cualquier información adicional que un investigador independiente necesite para comprender y usar los datos en el archivo de datos original.
+6.	Documentos complementarios con metadatos adicionales.
+
+## Carpeta 2: Archivos de comando
+
+La carpeta Archivos de comando contiene uno o más archivos que contienen código escrito en la sintaxis del software estadístico que utiliza para el estudio. El código en estos archivos de comandos debe ejecutar todo el procesamiento y análisis de datos necesarios para replicar el estudio y reproducir los resultados informados.
+
+La mejor manera de construir y organizar sus archivos de comandos puede variar según la naturaleza del proyecto. Sin embargo, en muchos casos, los pasos se pueden agrupar en tres fases, con uno o más archivos de comandos que ejecutan los pasos en cada fase.
+
+1.	Procesando los datos
+
+Los archivos de comando para esta fase transforman los archivos de datos originales (y / o importables) en los archivos de datos de análisis, que contienen los datos completamente limpios y procesados que se utilizan para generar los resultados informados en el documento.
+
+2.	Construyendo el Apéndice de Datos
+
+Los archivos de comandos para esta fase generan las estadísticas descriptivas, tablas y figuras presentadas en el Apéndice de datos, un documento que sirve como un libro de códigos para los archivos de datos de análisis.
+
+3.	Generando los resultados
+
+Usando los datos en los archivos de datos de análisis, los archivos de comandos para esta etapa realizan los procedimientos que generan los resultados informados en el documento. Cada comando que genera cualquiera de los resultados informados en el documento debe ir precedido de un comentario que indique qué resultados (por ejemplo, por número de tabla o figura, o página en la que aparece el resultado numérico) que produce.
+
+## Carpeta 3: Análisis
+
+Los archivos de datos completamente limpios y procesados que utiliza para generar los resultados informados en su documento se denominan archivos de datos de análisis. Por lo general, se construyen limpiando, procesando y combinando datos extraídos de uno o más archivos de datos originales.
+
+Se debe conservar una copia de cada archivo de datos de análisis utilizado para un estudio en la carpeta de datos de análisis.
+
+Es común el caso de que se use un solo archivo de datos limpios y procesados para generar todos los resultados informados en un documento, de modo que solo un archivo de datos de análisis debe almacenarse en la carpeta de datos de análisis. Pero cuando los resultados se generan a partir de más de un archivo de datos de análisis, todos deben incluirse.
+
+## Carpeta 4: Documentos
+
+La Carpeta Documentos debe contener tres elementos:
+•	Una copia de tu trabajo final (documento)
+•	Su apéndice de datos
+•	Tu archivo Read Me. (README)
+
+## Trabajo final
+
+Una copia electrónica de texto completo del documento completo o informe final sobre el proyecto.
+
+Guardar la versión electrónica de su documento en formato .pdf ayuda a evitar que el documento se cambie accidentalmente o se corrompa de alguna otra manera.
+
+## El Apéndice de Datos
+
+El Apéndice de datos es un documento que sirve como un libro de códigos para los archivos de datos de análisis. Debe ser redactado por los/as autores/as del artículo.
+
+Para cada archivo de datos de análisis, hay una sección correspondiente del Apéndice de datos. Cada sección está dividida en subsecciones, cada una de las cuales proporciona información sobre una de las variables en el archivo de datos de análisis.
+
+Parte de la información es la misma para todas las variables; otras partes de la información dependen de si la variable es cuantitativa o categórica.
+
+Para cada variable:
+•	El nombre de la variable y una definición completa (incluyendo, según corresponda, por ejemplo, codificación y / o unidades de medida, la redacción de una pregunta de encuesta en la que se basa la variable o los ajustes realizados para la inflación o la PPA).
+
+•	Los nombres del archivo de datos original del que se extrajo la variable, o del que se extrajeron las variables utilizadas para construirlo, y los nombres de las variables extraídas de los archivos de datos originales.
+
+•	El número de observaciones con valores válidos para la variable y el número de observaciones con valores faltantes.
+
+Para variables cuantitativas:
+•	Resumen de estadísticas descriptivas básicas, incluyendo la media, la desviación estándar, el mínimo, el percentil 25, la mediana, el percentil 75 y el máximo.
+
+•	Un histograma.
+
+Para variables categóricas:
+
+•	Una tabla de frecuencias.
+
+•	Un gráfico de barras que ilustra la distribución de frecuencia.
+
+## El Archivo Read Me
+
+El archivo Read Me me es un documento que describe los archivos incluidos en la documentación de replicación y explica cómo se pueden utilizar para replicar el estudio y reproducir los resultados.
+
+El archivo Read Me consta de tres secciones principales:
+
+### El contenido de la documentación de replicación
+
+Esta sección describe brevemente todos los archivos incluidos en la documentación de replicación y describe la estructura de las carpetas en las que están almacenados.
+
+### Modificaciones hechas a archivos de datos importables (si es necesario)
+
+Como se explicó anteriormente en la descripción de la carpeta de datos originales, siempre que un archivo de datos original esté en un formato que el software que está utilizando no pueda leer, debe crear una segunda versión, llamada archivo de datos importable, que su software pueda leer.
+
+La sección 2 del archivo Read Me documenta los cambios que realiza en sus archivos de datos importables. Para cada archivo de datos original que tenga que modificar, debe dar una explicación verbal de todos los cambios que realizó para crear la versión importable.Esa explicación debe escribirse en oraciones completas y gramaticalmente correctas; debe dar los nombres de las versiones originales e importables del archivo de datos que se modificó; y debe ser lo suficientemente preciso como para permitir que otra persona realice los mismos cambios en el archivo de datos original y termine con un archivo de datos importable idéntico al que usted creó.
+
+Si todos sus archivos de datos originales están en formatos que su software puede leer, de modo que no es necesario crear versiones importables de ninguno de ellos, simplemente puede omitir la sección 2 del archivo Read Me. (En ese caso, debe llamar a la última sección del archivo Read Me sección 2 en lugar de la sección 3.)
+
+### Instrucciones para replicar el estudio
+
+Esta sección proporciona instrucciones para usar la documentación de replicación para replicar el procesamiento y análisis de datos realizados para el estudio y reproducir los resultados informados.
+Estas instrucciones deben:
+
+•	Indicar qué tipo de software estadístico (incluido el número de versión y los complementos o paquetes) es necesario para ejecutar los archivos de comandos.
+
+•	Explicar qué archivos incluidos en la documentación de replicación deben copiarse localmente, la estructura de carpetas y subcarpetas en las que deben copiarse los archivos, y en qué directorio debe guardarse cada archivo.
+
+•	Indicar cuál de las carpetas debe establecerse como el directorio de trabajo cuando se ejecuta el software estadístico que ejecuta los archivos de comandos.
+
+•	Indicar el orden en que se deben ejecutar los archivos de comandos para llevar a cabo la replicación. Y, para cada archivo de comando, indique qué otros archivos son dependientes de éste (por ejemplo, qué archivos de datos abre y qué otros archivos de comandos llama) y qué salidas produce (por ejemplo, nuevos archivos de datos que guarda, archivos de datos antiguos que elimina y nuevos directorios que crea).
+
+
+
+
+
+
+

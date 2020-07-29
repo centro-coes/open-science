@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Protocolo de Reproducibilidad</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Centro de Estudios de Conflicto y Cohesión Social - COES</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="repos.cabierta.html">Ciencia abierta</a>
+</li>
+<li>
+  <a href="dataverse.html">Acceso</a>
+</li>
+<li>
+  <a href="reproducibilidad.html">Reproducibilidad</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Protocolo de Reproducibilidad</h1>
+
+</div>
+
+
+<div style="text-align: right">
+<p><strong>Julio César Iturra Sanhueza</strong> <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p><strong>Tomás Campos Castro</strong> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<p><strong>Juan Carlos Castillo</strong> <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+</div>
+<hr />
+<div id="introducción" class="section level1">
+<h1>Introducción</h1>
+<p>El presente apartado tiene como objetivo general el introducir a las y los investigadores de COES a un flujo de trabajo que cumpla con estándares mínimos para la confección de un trabajo transparente, abierto y, sobre todo, reproducible. En este sentido, esta sección se centrará en la organización de carpetas y archivos, con el objetivo de generar proyectos auto-contenidos que permitan la reproducibilidad de análisis y obtención de resultados, con un foco particular en la investigación cuantitativa. Como base para este documento, emplearemos los estándares propuestos por el Proyecto TIER, el cual se define de la siguiente manera:</p>
+<pre><code>Project TIER (Teaching Integrity in Empirical Research) promotes the integration of principles and practices related to transparency and replicability in the research training of social scientists. We develop methods and tools for enhancing research transparency that are specially designed to serve the needs of undergraduate and graduate students, and disseminate them to faculty who teach courses on quantitative methods or supervise student research, as well as to students interested in adopting them independently. Our goal is to reach a day in which training in research transparency becomes standard and ubiquitous in the education of social scientists.</code></pre>
+</div>
+<div id="el-protocolo" class="section level1">
+<h1>El Protocolo</h1>
+<p>Sobre la base del protocolo TIER en su versión 4.0, un proyecto debe contener al menos tres elementos o partes que son fundamentales.</p>
+<ol style="list-style-type: decimal">
+<li><p>Los datos empleados por el proyecto.</p></li>
+<li><p>Archivos de comandos, que contienen código escrito para su software, que limpian y preparan los datos según sea necesario, y luego ejecutan los procedimientos que generan los resultados reportados en su estudio.</p></li>
+<li><p>Diversas formas de información de respaldo para ayudar al usuario a comprender y hacer uso de su documentación (p.ej: archivos README)</p></li>
+</ol>
+<p>Dicho lo anterior, cada una de estas partes requiere particular atención, de modo tal que la articulación entre cada una de ellas sea lo más fluida posible y amigable para el usuario. A continuación, se presentan las cuatro carpetas que dan estructura a un proyecto. La Figura 1 ilustra los archivos que deben estar incluidos en la documentación, y cómo deben estar organizados en varias carpetas y subcarpetas.</p>
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+<div class="figure">
+<img src="images/reprod1.png" alt="Fig. 1: Documentación de un proyecto y su estructura" />
+<p class="caption"><strong>Fig. 1</strong>: Documentación de un proyecto y su estructura</p>
+</div>
+</div>
+<div id="carpeta-1-datos" class="section level2">
+<h2>Carpeta 1: Datos</h2>
+<p>En la carpeta para Datos encontraremos tres elementos principales:</p>
+<ol style="list-style-type: decimal">
+<li>Datos originales (sin procesar)</li>
+<li>Datos importables (bases con formato ad-hoc)</li>
+<li>Carpeta con toda la Meta-data de los datos empleados.</li>
+</ol>
+<p>Datos originales: En el caso de que el proyecto utilice datos secundarios o esté generando sus propios datos, se espera que existan copias de bases de datos sin procesar. Los archivos de datos originales sirven como un registro de los datos con los que comenzó el proyecto. Por lo tanto, las copias que guarde en su carpeta de Datos originales deben ser idénticas a las que comenzó antes de realizar cualquier cambio en ellas.</p>
+<p>El trabajo que realice para su proyecto implica manipular los archivos de datos originales de muchas maneras: extrayendo los datos que contienen, limpiando y procesando los datos según sea necesario para su estudio, y luego realizando sus análisis. Pero su carpeta de Datos originales debe contener copias de sus archivos de datos originales que no haya manipulado o modificado de ninguna manera.</p>
+<p>Datos importables: Ocasionalmente, un archivo de datos original está en un formato que el software estadístico que está utilizando para su proyecto no puede leer. En esos casos, debe crear una versión modificada del archivo de datos original en un formato que su software pueda leer. Esta versión modificada del archivo de datos original se denomina archivo de datos importable.</p>
+<p>Cuando necesite crear una versión importante de un archivo de datos original, solo debe realizar las modificaciones mínimas necesarias para que su software pueda leerlo. No haga otra limpieza o procesamiento en este momento.</p>
+<p>Cuando necesite crear una versión importable de un archivo de datos original, debe mantener ambas versiones (importable y original) en la carpeta Datos. (Las versiones originales e importables de un archivo de datos deben tener diferentes nombres).</p>
+<p>En el caso de que sus archivos de datos originales están en un formato que su software puede leer, no necesita crear ningún archivo de datos importable.</p>
+<div id="sub-carpeta-meta-data" class="section level3">
+<h3>Sub carpeta meta-data</h3>
+<p>La carpeta de meta-data debe contener:</p>
+<p>• Un documento Guía de la meta-data • Materiales suplementarios con meta-data (de ser necesario)</p>
+<p>Para cada uno de sus archivos de datos originales, la Guía de meta-data proporciona el tipo de información que normalmente se encuentra en un libro de códigos que acompaña a un conjunto de datos, como definiciones de variables y codificación, métodos de muestreo y cualquier otra cosa que un usuario necesite saber para trabajar e interpretar el dato adecuadamente. El autor/es del proyecto es quien/es deben redactar el documento guía.</p>
+<p>La Guía de metadatos debe organizarse en una o más secciones; cada sección debe proporcionar información sobre uno de sus archivos de datos originales. Para cada archivo de datos original, la información incluida en la Guía de metadatos debe incluir:</p>
+<ol style="list-style-type: decimal">
+<li>Una cita bibliográfica para el archivo de datos original.</li>
+<li>Un identificador de objeto digital (DOI) para el archivo de datos (si se ha asignado uno)</li>
+<li>La fecha en que el autor descargó por primera vez, u obtuvo de alguna otra manera, el archivo de datos original.</li>
+<li>Una explicación de cómo un lector interesado puede obtener una copia del archivo de datos original.</li>
+<li>Cualquier información adicional que un investigador independiente necesite para comprender y usar los datos en el archivo de datos original.</li>
+<li>Documentos complementarios con metadatos adicionales.</li>
+</ol>
+</div>
+</div>
+<div id="carpeta-2-archivos-de-comando" class="section level2">
+<h2>Carpeta 2: Archivos de comando</h2>
+<p>La carpeta Archivos de comando contiene uno o más archivos que contienen código escrito en la sintaxis del software estadístico que utiliza para el estudio. El código en estos archivos de comandos debe ejecutar todo el procesamiento y análisis de datos necesarios para replicar el estudio y reproducir los resultados informados.</p>
+<p>La mejor manera de construir y organizar sus archivos de comandos puede variar según la naturaleza del proyecto. Sin embargo, en muchos casos, los pasos se pueden agrupar en tres fases, con uno o más archivos de comandos que ejecutan los pasos en cada fase.</p>
+<ol style="list-style-type: decimal">
+<li>Procesando los datos</li>
+</ol>
+<p>Los archivos de comando para esta fase transforman los archivos de datos originales (y / o importables) en los archivos de datos de análisis, que contienen los datos completamente limpios y procesados que se utilizan para generar los resultados informados en el documento.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Construyendo el Apéndice de Datos</li>
+</ol>
+<p>Los archivos de comandos para esta fase generan las estadísticas descriptivas, tablas y figuras presentadas en el Apéndice de datos, un documento que sirve como un libro de códigos para los archivos de datos de análisis.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Generando los resultados</li>
+</ol>
+<p>Usando los datos en los archivos de datos de análisis, los archivos de comandos para esta etapa realizan los procedimientos que generan los resultados informados en el documento. Cada comando que genera cualquiera de los resultados informados en el documento debe ir precedido de un comentario que indique qué resultados (por ejemplo, por número de tabla o figura, o página en la que aparece el resultado numérico) que produce.</p>
+</div>
+<div id="carpeta-3-análisis" class="section level2">
+<h2>Carpeta 3: Análisis</h2>
+<p>Los archivos de datos completamente limpios y procesados que utiliza para generar los resultados informados en su documento se denominan archivos de datos de análisis. Por lo general, se construyen limpiando, procesando y combinando datos extraídos de uno o más archivos de datos originales.</p>
+<p>Se debe conservar una copia de cada archivo de datos de análisis utilizado para un estudio en la carpeta de datos de análisis.</p>
+<p>Es común el caso de que se use un solo archivo de datos limpios y procesados para generar todos los resultados informados en un documento, de modo que solo un archivo de datos de análisis debe almacenarse en la carpeta de datos de análisis. Pero cuando los resultados se generan a partir de más de un archivo de datos de análisis, todos deben incluirse.</p>
+</div>
+<div id="carpeta-4-documentos" class="section level2">
+<h2>Carpeta 4: Documentos</h2>
+<p>La Carpeta Documentos debe contener tres elementos: • Una copia de tu trabajo final (documento) • Su apéndice de datos • Tu archivo Read Me. (README)</p>
+</div>
+<div id="trabajo-final" class="section level2">
+<h2>Trabajo final</h2>
+<p>Una copia electrónica de texto completo del documento completo o informe final sobre el proyecto.</p>
+<p>Guardar la versión electrónica de su documento en formato .pdf ayuda a evitar que el documento se cambie accidentalmente o se corrompa de alguna otra manera.</p>
+</div>
+<div id="el-apéndice-de-datos" class="section level2">
+<h2>El Apéndice de Datos</h2>
+<p>El Apéndice de datos es un documento que sirve como un libro de códigos para los archivos de datos de análisis. Debe ser redactado por los/as autores/as del artículo.</p>
+<p>Para cada archivo de datos de análisis, hay una sección correspondiente del Apéndice de datos. Cada sección está dividida en subsecciones, cada una de las cuales proporciona información sobre una de las variables en el archivo de datos de análisis.</p>
+<p>Parte de la información es la misma para todas las variables; otras partes de la información dependen de si la variable es cuantitativa o categórica.</p>
+<p>Para cada variable: • El nombre de la variable y una definición completa (incluyendo, según corresponda, por ejemplo, codificación y / o unidades de medida, la redacción de una pregunta de encuesta en la que se basa la variable o los ajustes realizados para la inflación o la PPA).</p>
+<p>• Los nombres del archivo de datos original del que se extrajo la variable, o del que se extrajeron las variables utilizadas para construirlo, y los nombres de las variables extraídas de los archivos de datos originales.</p>
+<p>• El número de observaciones con valores válidos para la variable y el número de observaciones con valores faltantes.</p>
+<p>Para variables cuantitativas: • Resumen de estadísticas descriptivas básicas, incluyendo la media, la desviación estándar, el mínimo, el percentil 25, la mediana, el percentil 75 y el máximo.</p>
+<p>• Un histograma.</p>
+<p>Para variables categóricas:</p>
+<p>• Una tabla de frecuencias.</p>
+<p>• Un gráfico de barras que ilustra la distribución de frecuencia.</p>
+</div>
+<div id="el-archivo-read-me" class="section level2">
+<h2>El Archivo Read Me</h2>
+<p>El archivo Read Me me es un documento que describe los archivos incluidos en la documentación de replicación y explica cómo se pueden utilizar para replicar el estudio y reproducir los resultados.</p>
+<p>El archivo Read Me consta de tres secciones principales:</p>
+<div id="el-contenido-de-la-documentación-de-replicación" class="section level3">
+<h3>El contenido de la documentación de replicación</h3>
+<p>Esta sección describe brevemente todos los archivos incluidos en la documentación de replicación y describe la estructura de las carpetas en las que están almacenados.</p>
+</div>
+<div id="modificaciones-hechas-a-archivos-de-datos-importables-si-es-necesario" class="section level3">
+<h3>Modificaciones hechas a archivos de datos importables (si es necesario)</h3>
+<p>Como se explicó anteriormente en la descripción de la carpeta de datos originales, siempre que un archivo de datos original esté en un formato que el software que está utilizando no pueda leer, debe crear una segunda versión, llamada archivo de datos importable, que su software pueda leer.</p>
+<p>La sección 2 del archivo Read Me documenta los cambios que realiza en sus archivos de datos importables. Para cada archivo de datos original que tenga que modificar, debe dar una explicación verbal de todos los cambios que realizó para crear la versión importable.Esa explicación debe escribirse en oraciones completas y gramaticalmente correctas; debe dar los nombres de las versiones originales e importables del archivo de datos que se modificó; y debe ser lo suficientemente preciso como para permitir que otra persona realice los mismos cambios en el archivo de datos original y termine con un archivo de datos importable idéntico al que usted creó.</p>
+<p>Si todos sus archivos de datos originales están en formatos que su software puede leer, de modo que no es necesario crear versiones importables de ninguno de ellos, simplemente puede omitir la sección 2 del archivo Read Me. (En ese caso, debe llamar a la última sección del archivo Read Me sección 2 en lugar de la sección 3.)</p>
+</div>
+<div id="instrucciones-para-replicar-el-estudio" class="section level3">
+<h3>Instrucciones para replicar el estudio</h3>
+<p>Esta sección proporciona instrucciones para usar la documentación de replicación para replicar el procesamiento y análisis de datos realizados para el estudio y reproducir los resultados informados. Estas instrucciones deben:</p>
+<p>• Indicar qué tipo de software estadístico (incluido el número de versión y los complementos o paquetes) es necesario para ejecutar los archivos de comandos.</p>
+<p>• Explicar qué archivos incluidos en la documentación de replicación deben copiarse localmente, la estructura de carpetas y subcarpetas en las que deben copiarse los archivos, y en qué directorio debe guardarse cada archivo.</p>
+<p>• Indicar cuál de las carpetas debe establecerse como el directorio de trabajo cuando se ejecuta el software estadístico que ejecuta los archivos de comandos.</p>
+<p>• Indicar el orden en que se deben ejecutar los archivos de comandos para llevar a cabo la replicación. Y, para cada archivo de comando, indique qué otros archivos son dependientes de éste (por ejemplo, qué archivos de datos abre y qué otros archivos de comandos llama) y qué salidas produce (por ejemplo, nuevos archivos de datos que guarda, archivos de datos antiguos que elimina y nuevos directorios que crea).</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Asistente de la Línea de Interacciones Grupales e individuales en <strong><a href="https://www.coes.cl/">COES</a></strong><a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Coordinador de Proyectos en <strong><a href="https://www.coes.cl/">COES</a></strong><a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>Subdirector e Investigador Principal en <strong><a href="https://www.coes.cl/">COES</a></strong><a href="#fnref3">↩</a></p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

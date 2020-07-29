@@ -1,0 +1,327 @@
+---
+title: "Repositorio de datos COES"
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      collapsed: no
+  pdf_document:
+    toc: yes
+---
+
+<div style="text-align: right">
+**Benjamín Muñoz Rojas** [^1]
+
+**Tomás Campos Castro** [^2]
+
+**Julio César Iturra Sanhueza** [^3]
+
+**Juan Carlos Castillo** [^4]
+
+[^1]: Coordinador Técnico ELSOC en **[COES](https://www.coes.cl/)**
+[^2]: Coordinador de Proyectos en **[COES](https://www.coes.cl/)**
+[^3]: Asistente de la Línea de Interacciones Grupales e individuales en **[COES](https://www.coes.cl/)**
+[^4]: Subdirector e Investigador Principal en **[COES](https://www.coes.cl/)**
+
+</div>
+
+---
+
+# Introducción
+
+El presente documento tiene por objetivo disponibilizar un protocolo para mantener actualizado el repositorio que tiene COES en el **[dataverse de Harvard](https://dataverse.harvard.edu/dataverse/coes_data_repository)**. Esto se enmarca en el esfuerzo para poder profundizar los lineamientos de Ciencia Abierta en el Centro mismo, como también en las personas que lo componen. Por último, el siguiente protocolo busca poner a disposición de la comunidad científica los datos generados por el **[Centro de Conflicto y Cohesión Social](https://www.coes.cl/)**.
+
+Como primer paso, logramos consolidar una plataforma abierta donde están alojados los datos generados por COES: **[Estudio Longitudinal Social de Chile - ELSOC](https://dataverse.harvard.edu/dataverse/elsoc)**, **[Observatorio de Conflictos - OC](https://dataverse.harvard.edu/dataverse/OC)**, **[Observatorio de Huelgas Laborales - OHL](https://dataverse.harvard.edu/dataverse/ohl)** y la **[Encuesta Nacional de COES 2014](https://dataverse.harvard.edu/dataverse/encoes)**. Por ello, continuaremos actualizado dichos datos a medida que se vayan ampliando los datos recolectados, como también se espera que el repositorio general se vaya poblando con otros datos producidos por el Centro.
+
+Dicho lo anterior, se presentan a continuación los pasos que se deben seguir para subir al repositorio los datos que cada investigador o investigadora vaya generando.
+
+# Protocolo de subida de datos
+
+I.	Todas las bases de datos que COES decida poner a libre disposición del público serán subidos a la plataforma https://dataverse.harvard.edu/dataverse/coes_data_repository.
+
+II.	Sólo los usuarios con cuentas habilitadas podrán realizar este procedimiento. Existirá una única cuenta de Administrador (documento anexo con listado de usuarios y contraseña) y cuentas adicionales de Contribuyentes (existe una cuenta por línea). El administrador tendrá capacidades sin restricciones en la gestión y uso del repositorio COES, mientras que los contribuyentes tendrán capacidades restringidas al ingreso de datos a la plataforma. 
+
+III. El repositorio de COES se estructura en torno a un único repositorio maestro (COES Data Repository) y en su interior sub-repositorios asociados a cada uno de los proyectos de investigación. No está permitido subir bases de datos de manera separada de los sub-repositorios del Centro. En caso de que la base de datos no sea parte de ninguno de los proyectos que actualmente cuentan con un sub-repositorio, se debe crear un nuevo sub-repositorio para su inclusión. En la Guía de Ingreso de Datos se detalla cómo hacer este procedimiento. 
+
+IV.	No se puede modificar la URL (Identifier) que identifica al COES Data Repository. El Administrador será el único habilitado para modificar otros campos asociados al repositorio maestro. La modificación de la cuenta de correo electrónico asociada al repositorio maestro y la descripción del repositorio deberá ser evaluada por el Administrador en conversación con la coordinación del Centro, con el objetivo de evitar problemas en el flujo de la información. 
+
+V.	Al crear un nuevo sub-repositorio, éste debe hacerse desde el repositorio COES Data Repository. No se permite crear otro repositorio maestro asociado al Centro.
+
+VI.	En un nuevo sub-repositorio, no se puede modificar el “Host Dataverse”. Tanto el nombre como la descripción del nuevo sub-repositorio deberán ser escritos en idioma inglés. Es obligación incluir una breve descripción del proyecto.  Los nuevos sub-repositorios utilizarán la estructura de metadatos de COES Data Repository (Social Science and Humanities Metadata), salvo excepciones justificadas con el Administrador. Como regla general, la afiliación institucional del sub-repositorio serán las cuatro universidades que conforman el Centro (Pontificia Universidad Católica de Chile, Universidad de Chile, Universidad Diego Portales y Universidad Adolfo Ibáñez), pero este campo puede ser modificado en caso que el proyecto lo amerite. 
+
+VII. Al agregar una nueva base de datos, no se puede modificar el “Host Dataverse”. El nombre deberá ser escritos en idioma inglés. Seguir las otras recomendaciones generales asociadas a los nombres de las bases de datos (lower case camel, no uso de espacios) y se debe incluir cualquier detalle pertinente para su adecuada identificación (año de recolección, versión, formato de la base de datos, etc.). Se debe identificar un autor de la base de datos, el cual puede corresponder a un investigador,  un grupo de investigadores o un equipo u organización. Éste corresponde al autor intelectual del proyecto y quiénes planificaron/diseñaron la recolección de los datos. Como regla general, la afiliación institucional del sub-repositorio serán las cuatro universidades que conforman el Centro (Pontificia Universidad Católica de Chile, Universidad de Chile, Universidad Diego Portales y Universidad Adolfo Ibáñez), pero este campo puede ser modificado en caso que el proyecto lo amerite.  Como regla general, el correo de contacto es el asociado al Administrador (encuestacoes@gmail.com) , pero dicho campo puede ser modificado según las particularidades del proyecto. En caso de usar un contacto distinto, esto debe ser notificado al Administrador. 
+
+VIII.	Como principio general, se debe completar la mayor cantidad de campos factibles en términos de metadatos asociados a la base de datos ingresada. Como mínimo, una base de datos asociada a COES debe indicar: 
+
+•	Descripción (en idioma inglés y no más de 200 palabras) del objetivo general del estudio y sus principales particularidades analíticas.
+
+•	Fecha de elaboración de la base de datos (no de incorporación el repositorio).
+
+•	Keywords o palabras clave para facilitar la búsqueda de la base de datos. Como mínimo, deben ingresarse tres, todas en idioma inglés.
+
+•	Subject: como regla general se debe indicar Social Sciences, pero puede ser modificado en base a las particularidades del proyecto.
+
+•	Depositor: como regla general será “Reproducible Research”, pero es posible modificar este campo. Se debe indicar la fecha de depósito de la base de datos.
+
+•	Unidad de Análisis y Universo de Casos.
+
+•	Temporalidad en la base de datos (panel, cross-sectional, etc.) y periodicidad (Monthly, Annual, etc. En caso de que sea un corte transversal recolectado en una única ocasión señalar “None”).
+
+•	Procedimiento de Muestreo/Recolección: estrategia usada para seleccionar/identificar las observaciones que serán observadas. En caso de encuestas se requiere documentar el procedimiento de muestreo. En proyectos de otra índole identificar si se busca alcanzar una población completa, si se sigue alguna estrategia de selección de casos o muestreo no probabilístico. 
+
+•	Tamaño Muestral Objetivo/Actual: indicar el número de casos (correspondiente con unidad de análisis) incorporados en la base de datos definitiva. 
+
+•	Método de recolección y tipo de instrumento: instrumento utilizado para la recolección de los datos. 
+
+Es obligación del Contribuyente de datos revisar las instrucciones asociadas a cada uno de estos campos, las cuales aparecen disponibles en el sitio web (tanto en la Guía de Uso como en los botones de ayuda):
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 1**: Descripción metadata](images\dataverse1.png){height=9em }
+
+</div>
+ 
+
+ IX. La base de datos incorporada al repositorio debe seguir todas las pautas descritas por COES: 
+
+•	Deben ser publicados de la manera menos procesada posible. Sin agregaciones estadísticas previas.
+
+•	Utilizar formatos abiertos, estables y de amplio uso: Requisito datos en formato Excel y, al menos, uno de los formatos de programas estadísticos clásicos (.sav, .dta, .Rdata/rds). Se recomienda .dta, ya que es más fácil su transformación. Como mínimo, debe incorporarse una versión .csv y otra .dta. La plataforma es capaz de transformar internamente distintos formatos, pero si el Contribuyente lo estima preferible, puede subir las versiones formateadas para cada software.
+
+•	El nombre de los archivos se presente en el estilo Lower Camel Case, es decir, se escriben las palabras juntas y sin espacios, con la primera letra de la primera palabra en minúscula y la primera letra de las siguientes palabras en mayúscula. Ej: encuestaElsoc.csv.
+
+•	No incluir Ñ, caracteres especiales, guiones, etc. (UTF-8). 
+
+•	Usar el mismo formato en todo el archivo. Dicho formato debe aplicarse a todos los archivos que formen parte del mismo proyecto.
+
+•	Los encabezados de las columnas deben describir el contenido de cada columna (nombres de variables). Los encabezados de las columnas deben estar construidos de manera de facilitar la importación con varios sistemas. Deben contener solo números, letras y guiones bajos, sin espacios ni otros caracteres. Se prefieren letras minúsculas (ej: “edad_anos”)
+
+•	En las filas se incorporan los casos a analizar.
+
+•	Si se utilizan bases de datos etiquetadas, las etiquetas deben cumplir con los criterios anteriormente descritos (codificación UTF-8, no incorporar símbolos especiales, etc).
+
+X. El contribuyente de la base de datos debe procurar que el proceso de añadir la base de datos se complete adecuadamente. Deberá, antes de concluir el procedimiento y publicar los datos, revisar si las bases de datos han sido adecuadamente a la plataforma. Para dicho objetivo, debe descargar la base de datos del repositorio. Adicionalmente debe incorporar una etiqueta (Description), en idioma inglés, que señale el tipo de Archivo (Survey Dataset; Original Dataset, etc.). En caso de que se suban múltiples versiones, se debe incluir en dicha etiqueta, y entre paréntesis, el formato del archivo original.
+
+XI. No es factible agregar únicamente la base de datos al repositorio COES. El contribuyente debe, adicionalmente, incorporar la documentación requerida para permitir el adecuado uso de la base de datos de parte de un usuario externo. Como mínimo, se debe añadir el Manual de Usuario y el instrumento de recolección (cuestionario, grilla de codificación, etc.). 
+
+•	El Manual de Usuario debe ser un documento que contenga todos los insumos de información necesarios para que un investigador con competencias básicas en análisis de datos pero sin ningún conocimiento sobre el proyecto, sea capaz de utilizar la base de datos de manera autónoma en algún proyecto de investigación de su interés. 
+
+•	La estructura general del Manual de Usuario: a) Descripción general (¿Qué es el estudio, de qué trata?), b) Diseño metodológico (Encuesta: Diseño muestral, generación de cuestionario, trabajo de campo; Estudios de Observación: Descripción, unidad de análisis, fuentes de información, calidad de datos; si existe pre registro, incluir acá), c) Libro de códigos, e) Instrumento y otros documentos Anexos. Incluir en el manual una foto de ejemplo de organización del libro de códigos.
+
+XII. Previo a la Publicación de la Base de Datos, debe modificarse el campo “Terms”, señalando los términos de uso y otras regulaciones asociadas a la liberación de la base de datos. COES ha diseñado unos términos de uso específicos (Ver documento Anexo), los cuales pueden ser copiados y pegados en dicho campo.
+
+XIII. Se recomienda el uso de Guestbook como insumo para recolectar información básica sobre los usuarios que descargan la base de datos. COES ha diseñado un Guestbook básico (Ver documento Anexo) para estos fines.
+
+XIV. Antes de publicar un repositorio y/o una base de datos, debe ser “piloteado” su funcionamiento. Dicha responsabilidad recae en el Contribuyente. Sin embargo, únicamente el Administrador podrá publicar repositorios. Dada dicha responsabilidad, el Administrador realizará una revisión general anterior a la publicación del sub-repositorio y/o base de datos. 
+
+XV. Es obligación documentar, cada uno de estos procesos, por medio de minutas que señalen las fechas, proyectos y usuarios involucrados. 
+
+# Guía de Ingreso de Datos al Repositorio de COES
+
+Ingresar al sitio web https://dataverse.harvard.edu/ y, desde la barra superior, seleccionar “Log In”.
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 2**: Log In](images\dataverse2.png){height=9em }
+
+</div>
+
+En dicha ventana, se debe seleccionar la opción “Username Email”:
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 3**: Log In 2](images\dataverse3.png){height=9em }
+
+</div>
+
+Luego debe ingresarse el usuario y la contraseña de ingreso. El equipo COES ha definido una única cuenta maestra (Administrador) con privilegios plenos de manejo y edición de la cuenta del Dataverse. Adicionalmente se contemplan cuatro cuentas adicionales, con funciones limitadas a la incorporación de base de datos (Contribuyentes) en la plataforma Dataverse Project.
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 4**: Ingreso Repositorio COES](images\dataverse4.png){height=9em }
+
+</div>
+
+Desde la ventana general, en la barra superior derecha se identifica el usuario “Centre for Social Conflict and Cohesion Studies COES Reproducible Research”. Dentro de dicha barra, se encuentra el acceso a “User Guide”. A cualquier usuario nuevo se recomienda revisar dicho recurso, el cual sistematiza todos los pasos para el uso del Dataverse. Los protocolos de COES no sustituyen la necesidad de revisar la guía de uso del Dataverse. 
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 5**: Userguide](images\dataverse5.png){height=9em }
+
+</div>
+
+En la opción “Add Data” se pueden ingresar bases de datos al repositorio COES. En su interior, hay dos opciones: (i) New Dataverse y (ii) New Dataset. Como regla general, el repositorio de COES se estructura en torno a sub-repositorios, y al interior de éstos se ingresan las bases de datos. Por lo tanto, no es necesario crear nuevos repositorios con la opción “New Dataverse”.
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 6**: New Dataverse](images\dataverse6.png){height=9em }
+
+</div>
+
+Se debe crear un nuevo sub-repositorio si los datos que serán ingresados no forman parte de los sub-repositorios existentes. Es responsabilidad del contribuyente, en diálogo con el administrador, discernir cuál es el sub-repositorio adecuado para la base de datos respectiva. 
+
+## Crear un nuevo sub-repositorio
+
+Dirigirse al repositorio principal, asociado a la cuenta de COES, el cual se llama “COES Data Repository”. En su interior, por medio de la opción “Add Data” y luego “New Dataverse” se puede crear un nuevo sub-repositorio.
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 7**: Creación sub-repositorio](images\dataverse7.png){height=9em }
+
+</div>
+
+Tras la creación del nuevo sub-repositorio, se abre una nueva ventana, siendo necesario ingresar una serie de campos obligatorios:
+
+•	El Host Dataverse no debe ser modificado.
+
+•	Dataverse Name: Se debe ingresar un nombre para el sub-repositorio, el cual debe ser escrito en inglés. El nombre debe ser autodescriptivo del proyecto al cual corresponde el sub-repositorio.
+
+•	Identifier: En el campo debe ingresarse un nombre sencillo (idealmente usar menos de 8 caracteres, sin espacios ni caracteres especiales) que identifique el sub-repositorio. Dicho nombre será parte de la URL. 
+
+•	Category: dentro de las múltiples opciones, por defecto, debe utilizarse “Research Project”. El uso de otra categoría debe ser decidida por el Administrador por motivos debidamente. 
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 8**: Características sub-repositorio](images\dataverse8.png){height=9em }
+
+</div>
+
+•	Email: se debe ingresar una cuenta de correo electrónico para facilitar la comunicación con los usuarios de los datos. Por defecto se encuentra disponible el correo de ELSOC  encuestacoes@gmail.com, pero es factible utilizar otros correos electrónicos.
+
+•	Affiliation: en este campo se señaliza la afiliación institucional del proyecto. Por defecto se ingresan las cuatro Universidades que conforman COES (UCH, PUC, UDP y UAI), pero es posible modificar este campo según las particularidades del sub-repositorio.
+
+•	Description: en este campo se resume, en idioma inglés, los aspectos centrales del proyecto que constituye el sub-repositorio. Es recomendable el uso de tags u otros elementos para el formateo de textos en html. Como referencia básica se puede utilizar el sitio web https://www.w3schools.com/tags/.
+
+A continuación, se determinan la estructura de metadatos a utilizar y los campos de búsqueda sugeridos. La estructura de metadatos utilizada es la “Social Science and Humanities Metadata”, la cual es la opción por defecto en los sub-repositorios asociados a COES. Una modificación a este campo debe ser definida por el Administrador.  
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 9**: Estructura metadata](images\dataverse9.png){height=9em }
+
+</div>
+
+Los términos de Búsqueda mínimos que serán utilizados serán “Autor”, “Keywords”, “Kind of Data”. Es recomendable usar un número mayor de campos para facilitar la búsqueda de los datos.
+
+## Ingresar una nueva base de datos a un sub-repositorio existente. 
+
+Dirigirse al sub-repositorio asociado al proyecto de investigación (recuerde que todo sub-repositorio debe estar anidado dentro del repositorio maestro “COES Data Repository”) en el cual se depositarán las bases de datos ingresadas. En su interior, por medio de la opción “Add Data” y luego “New Dataset” se puede agregar una nueva base de datos. 
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 10**: Nuevo set de datos](images\dataverse10.png){height=9em }
+
+</div>
+
+Tras la creación de la nueva base de datos, se abre una nueva ventana, siendo necesario ingresar una serie de campos obligatorios:
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 11**: Nuevo set de datos 2](images\dataverse11.png){height=9em }
+
+</div>
+
+•	Host Dataverse: no se debe modificar este campo. Si el sub-repositorio elegido no es el elegido, el Contribuyente/Administrador debe seleccionar “Cancel” y dirigirse al sub-repositorio adecuado. 
+
+•	Debe ingresar un título, en idioma inglés, que describa la base de datos del proyecto. Adicionalmente debe ingresarse el autor de la base de datos (que corresponde al investigador o equipo encargado del proyecto), su afiliación institucional (por defecto, serán las cuatro universidades que componen COES, pero esto depende de la identidad del autor) y un contacto. 
+
+</div>
+
+Tras la creación de la nueva base de datos, se abre una nueva ventana, siendo necesario ingresar una serie de campos obligatorios:
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 12**: Nuevo set de datos 3](images\dataverse12.png){height=9em }
+
+</div>
+
+Deben completarse los campos definidos como mínimos (ver Protocolo), en idioma inglés. Se recomienda revisar otras bases de datos y/o sub-repositorios en caso de dudas frente al modo de rellenar los campos. También se deben revisar las ayudas provistas por el sistema.
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 13**: Nuevo set de datos 4](images\dataverse13.png){height=9em }
+
+</div>
+
+Como regla general, se utiliza la “Social Sciences Metadata”, la cual presupone una serie de campos obligatorios:
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 14**: Nuevo set de datos 5](images\dataverse14.png){height=9em }
+
+</div>
+
+Tras completar los campos mínimos y obligatorios asociados a los meta-datos, se deben añadir las bases de datos. Se recomienda realizar dicho procedimiento con acceso a una buena banda ancha, dado que el proceso puede tomar varios minutos, especialmente con bases de datos extensas.
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 15**: Nuevo set de datos 6](images\dataverse15.png){height=9em }
+
+</div>
+
+Se debe seleccionar el archivo a subir. Con el objetivo de minimizar los errores, se recomienda realizar dicho procedimiento, un archivo a la vez.
+
+El Protocolo COES exige el uso de descriptores de los archivos. Un primer modo es rellenar el campo Description con un texto que señale el tipo de archivo.
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 16**: Nuevo set de datos 7](images\dataverse16.png){height=9em }
+
+</div>
+
+Otra opción es apretar el botón “Edit” dentro de la base de datos e indicar la opción “Tags”:
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 17**: Nuevo set de datos 8](images\dataverse17.png){height=9em }
+
+</div>
+
+Aquí se debe elegir la opción asociada al tipo de archivo:
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 18**: Nuevo set de datos 9](images\dataverse18.png){height=9em }
+
+</div>
+
+Generalmente, no se impondrán restricciones al acceso de los datos disponibles en el COES Data Repository (y sus sub-repositorios asociados). Sin embargo, el Administrador puede determinar excepciones debidamente justificadas. En dicho caso se debe seleccionar la opción “Restrict”:
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 19**: Nuevo set de datos 10](images\dataverse19.png){height=9em }
+
+</div>
+
+El Protocolo COES exige que cada base de datos añadida sea acompañada de un Manual de Usuario y otros documentos relevantes para facilitar el uso por parte de los investigadores.
+
+Tras concluir la subida de archivos (y con los campos de meta-datos completados) se debe indicar “Save Dataset”: 
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 20**: Guardar nuevo set de datos](images\dataverse20.png){height=9em }
+
+</div>
+
+Tras esto, cambiará la nueva ventana y se iniciará el proceso de “Ingesting”, en el cual la plataforma adapta los datos a sus estándares:
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 21**: Ingesting](images\dataverse21.png){height=9em }
+
+</div>
+
+Como paso final, deben modificarse los Términos de Uso de la Base de Datos:
+
+<div style="float:left;margin-left: 0px; margin-right: 30px;">
+
+ ![**Fig. 22**: Términos de uso](images\dataverse22.png){height=9em }
+
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+name: "Ciencia Abierta"
+output_dir: "."
+navbar:
+  title: "Centro de Estudios de Conflicto y Cohesión Social - COES"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Ciencia abierta"
+      href: repos.cabierta.html
+    - text: "Acceso"
+      href: dataverse.html
+    - text: "Reproducibilidad"
+      href: reproducibilidad.html
