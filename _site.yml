@@ -13,3 +13,5 @@ navbar:
       href: dataverse.html
     - text: "Reproducibilidad"
       href: reproducibilidad.html
+    - text: "Repositorio COES"
+      href: repositorio.html
